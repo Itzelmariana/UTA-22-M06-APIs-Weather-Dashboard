@@ -60,13 +60,17 @@ h1 {
 }
 
 .main-city {
-  font-size: 30px;
+  font-size: 35px;
 }
+.main-date {
+  margin-bottom: 7px;
+}
+
 .main-icon {
   font-size: 43px;
 }
 .main-temp {
-  font-size: 43px;
+  font-size: 55px;
 }
 .main-f {
   text-align: left;

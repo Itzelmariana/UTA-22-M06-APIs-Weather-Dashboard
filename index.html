@@ -45,6 +45,7 @@
             placeholder="Search for a city"
             class="input-city"
             id="input-city"
+       
           />
           <button type="submit" class="search-btn" id="search-btn">
             Search
@@ -65,12 +66,13 @@
         <div class="col-9">
           <div class="row main-display" id="main-display">
             <div class="col-4">
-              <h2 class="main-city" id="main-city">Atlanta</h2>
-              <p class="main-date" id="main-date">July 1st,2020</p>
+              <h2 class="main-city" id="main-city"></h2>
+              <p class="main-date" id="main-date"></p>
+              <p class="main-time" id="main-time"></p>
             </div>
-            <div class="col-2 main-icon" id="main-icon">🌤</div>
+            <div class="col-2 main-icon"><img id="main-icon" src="" alt="icon"></div>
             <div class="col-3 main-temp">
-              <span id="main-temp">99</span>
+              <span id="main-temp"></span>
               <span>°F</span>
             </div>
 
@@ -78,89 +80,13 @@
               <ul>
                 <li>Wind:<span id="main-wind"> </span>MPH</li>
                 <li>Humidity:<span id="main-humidity"> </span>%</li>
-                <li>UV index: <span class="uv" id="main-uv">79</span></li>
+                <li>UV index: <span class="uv" id="main-uv"></span></li>
               </ul>
             </div>
           </div>
           <h3>5 day Forecast:</h3>
           <div class="container">
-            <div class="row">
-              <div class="col forecast">
-                <ul class="forecast1">
-                  <li><h4 id="forecast-date1">Date</h4></li>
-                  <li class="forecast-icon" id="forecast-icon1">🌤</li>
-                  <li class="forecast-details">
-                    Temp: <span id="forecast-temp1"></span>°F
-                  </li>
-                  <li class="forecast-details">
-                    Wind: <span id="forecast-wind1"></span>MPH
-                  </li>
-                  <li class="forecast-details">
-                    Humidity: <span id="forecast-hum1"></span>%
-                  </li>
-                </ul>
-              </div>
-              <div class="col forecast">
-                <ul class="forecast2">
-                  <li><h4 id="forecast-date2">Date</h4></li>
-                  <li class="forecast-icon" id="forecast-icon2">🌤</li>
-                  <li class="forecast-details">
-                    Temp: <span id="forecast-temp2"></span>°F
-                  </li>
-                  <li class="forecast-details">
-                    Wind: <span id="forecast-wind2"></span>MPH
-                  </li>
-                  <li class="forecast-details">
-                    Humidity: <span id="forecast-hum2"></span>%
-                  </li>
-                </ul>
-              </div>
-              <div class="col forecast">
-                <ul class="forecast3">
-                  <li><h4 id="forecast-date3">Date</h4></li>
-                  <li class="forecast-icon" id="forecast-icon3">🌤</li>
-                  <li class="forecast-details">
-                    Temp: <span id="forecast-temp3"></span>°F
-                  </li>
-                  <li class="forecast-details">
-                    Wind: <span id="forecast-wind3"></span>MPH
-                  </li>
-                  <li class="forecast-details">
-                    Humidity: <span id="forecast-hum3"></span>%
-                  </li>
-                </ul>
-              </div>
-              <div class="col forecast">
-                <ul class="forecast4">
-                  <li><h4 id="forecast-date4">Date</h4></li>
-                  <li class="forecast-icon" id="forecast-icon2">🌤</li>
-                  <li class="forecast-details">
-                    Temp: <span id="forecast-temp4"></span>°F
-                  </li>
-                  <li class="forecast-details">
-                    Wind: <span id="forecast-wind4"></span>MPH
-                  </li>
-                  <li class="forecast-details">
-                    Humidity: <span id="forecast-hum4"></span>%
-                  </li>
-                </ul>
-              </div>
-              <div class="col forecast">
-                <ul class="forecast5">
-                  <li><h4 id="forecast-date5">Date</h4></li>
-                  <li class="forecast-icon" id="forecast-icon5">🌤</li>
-                  <li class="forecast-details">
-                    Temp: <span id="forecast-temp5"></span>°F
-                  </li>
-                  <li class="forecast-details">
-                    Wind: <span id="forecast-wind5"></span>MPH
-                  </li>
-                  <li class="forecast-details">
-                    Humidity: <span id="forecast-hum5"></span>%
-                  </li>
-                </ul>
-              </div>
-            </div>
+              <div class="forecastA" id="forecastA"></div>
           </div>
         </div>
       </div>
