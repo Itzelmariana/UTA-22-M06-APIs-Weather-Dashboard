@@ -1,4 +1,9 @@
+if (!localStorage["searchHistory"]) {
+  localStorage["searchHistory"] = JSON.stringify([]);
+}
+
 let apiKey = "2a980a820d1b255b9609b3f0f671cc24";
+
 var today = moment();
 $("#main-date").text(today.format("dddd, MMMM Do, YYYY"));
 
@@ -31,16 +36,27 @@ function displayWeatherCondition(response) {
   getForecast(response.data.coord);
 }
 
-function searchCity(city) {
+function searchCity(city, storeSearch) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
 
   axios.get(apiUrl).then(displayWeatherCondition);
+  if (storeSearch) {
+    storeHistory(city);
+  }
+  showSearchHistory();
 }
 
 function handleSumit(event) {
   event.preventDefault();
   let city = document.querySelector("#input-city").value;
-  searchCity(city);
+  if (city.length != 0) {
+    searchCity(city, true);
+  }
+}
+function handleSumitBtn(event) {
+  event.preventDefault();
+  let city = event.target.innerHTML;
+  searchCity(city, false);
 }
 
 function displayBoth(response) {
@@ -61,7 +77,7 @@ function color(uvi) {
   } else if (uvi > 6) {
     return "uv-red";
   } else {
-    return "uv-orage";
+    return "uv-orange";
   }
 }
 
@@ -72,14 +88,6 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayBoth);
 }
 
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[day];
-}
-
 function displayForecast(response) {
   let forecast = response.data.daily;
 
@@ -87,13 +95,15 @@ function displayForecast(response) {
 
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
+    var day = moment(forecastDay.dt * 1000);
+
     if (index < 5) {
       forecastHTML =
         forecastHTML +
         `
-      <div class="col forecast">
-  
-        <h4 id="forecast-date">${formatDay(forecastDay.dt)}</h4>
+      <div class="col forecast">   
+        <h4 class="forecast-week">${day.format("ddd")}</h4>
+         <p class="forecast-date">${day.format("MMM-DD-YY")}</p>
         <img
           src="http://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
@@ -103,16 +113,20 @@ function displayForecast(response) {
           class="forecast-icon" 
         />
         <div class="forecast-details">
-          <span class="maxtemp"> ${Math.round(forecastDay.temp.min)}° </span>
+          <span class="forecast-mintemp"> ${Math.round(
+            forecastDay.temp.min
+          )}° </span>
           <span> | </span>
-          <span class="mintemp"> ${Math.round(forecastDay.temp.max)}° </span> 
-          <div>Wind: <span id="forecast-wind">${Math.round(
-            forecastDay.wind_speed)} </span> MPH</div>
-          <div> Humidity: <span id="forecast-hum">${Math.round(
+          <span class="forecast-maxtemp"> ${Math.round(
+            forecastDay.temp.max
+          )}° </span> 
+          <div>Wind: <span class="forecast-wind">${Math.round(
+            forecastDay.wind_speed
+          )} </span> MPH</div>
+          <div> Humidity: <span class="forecast-hum">${Math.round(
             forecastDay.humidity
           )}</span>%</div>
-        </div>
-        
+        </div>   
       </div>
   `;
     }
@@ -120,6 +134,36 @@ function displayForecast(response) {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+/// History storage
+
+function storeHistory(city) {
+  var storageKey = "searchHistory";
+  console.log(localStorage[storageKey]);
+  var historyArray = JSON.parse(localStorage[storageKey]);
+  historyArray.push(city);
+  localStorage[storageKey] = JSON.stringify(historyArray);
+}
+
+function showSearchHistory() {
+  var storageKey = "searchHistory";
+  var historyArray = JSON.parse(localStorage[storageKey]);
+
+  let cityElement = document.querySelector(".cities-list");
+  let cityListHTML = `<ul>`;
+
+  for (var i = 0; i < Math.min(historyArray.length, 8); i++) {
+    cityListHTML += `<li class="city-history-btn">${historyArray[i]}</li>`;
+  }
+
+  cityListHTML = cityListHTML + `</ul>`;
+  cityElement.innerHTML = cityListHTML;
+
+  var searchCityBtn = document.querySelectorAll(".city-history-btn");
+  for (var i = 0; i < searchCityBtn.length; i++) {
+    searchCityBtn[i].addEventListener("click", handleSumitBtn);
+  }
 }
 
 ///Buttons Event listener
@@ -137,4 +181,6 @@ inputCity.addEventListener("keyup", function (event) {
 });
 
 ///Up to date info
-searchCity("New York");
+
+//loadHistory();
+searchCity("New York", false);

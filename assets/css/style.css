@@ -41,7 +41,7 @@ h1 {
 
 .cities-list li {
   width: 100%;
-  margin-top: 15px;
+  margin-top: 16px;
   padding-top: 7px;
   padding-bottom: 7px;
   border: var(--border);
@@ -49,6 +49,10 @@ h1 {
   background-color: rgb(166, 190, 232);
   text-align: center;
   color: rgb(32, 31, 31);
+}
+
+.cities-list li::first-letter {
+  text-transform: capitalize;
 }
 
 .main-display {
@@ -88,21 +92,28 @@ h3 {
   border: var(--border);
   border-radius: var(--border-radius);
   margin-right: 25px;
-  background-color: whitesmoke;
   color: rgb(48, 48, 48);
   text-align: center;
 }
 h4 {
-  padding: 15px 2px;
+  padding: 10px 0 0;
   font-weight: bolder;
   font-size: 17px;
 }
+.forecast-week {
+  margin-bottom: 7px;
+}
 .forecast-icon {
-  padding: 2px 0 25px;
+  margin-bottom: 10px;
 }
 .forecast-details {
   line-height: 22px;
+  font-size: 15px;
 }
+.forecast-mintemp {
+  color: rgb(121, 148, 169);
+}
+
 .uv-orange {
   background-color: rgb(237, 207, 87);
   border-radius: 4px;
