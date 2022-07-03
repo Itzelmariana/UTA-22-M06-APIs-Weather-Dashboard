@@ -11,7 +11,7 @@ Acceptance criteria:
 - 5 day forecast must display date, an icon representing weather conditions, wind speed and humidity.
 - Seach history must present current and future conditions for that city
 
-Deployed project can be find at [link](https://itzelmariana.github.io/UTA-22-M06-APIs-Weather_Dashboard).
+Deployed project can be find at [link](https://itzelmariana.github.io/UTA-22-M06-APIs-Weather-Dashboard).
 
 Mock-up
 

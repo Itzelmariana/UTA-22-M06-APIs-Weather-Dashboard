@@ -92,13 +92,12 @@ function displayForecast(response) {
   var forecastElement = document.querySelector("#forecastA");
 
   var forecastHTML = `<div class="row">`;
-  forecast.forEach(function (forecastDay, index) {
+  forecast.slice(1, 6).forEach(function (forecastDay) {
     var day = moment(forecastDay.dt * 1000);
 
-    if (index < 5) {
-      forecastHTML =
-        forecastHTML +
-        `
+    forecastHTML =
+      forecastHTML +
+      `
       <div class="col-sm forecast">   
         <h4 class="forecast-week">${day.format("ddd")}</h4>
          <p class="forecast-date">${day.format("MMM-DD-YY")}</p>
@@ -127,7 +126,6 @@ function displayForecast(response) {
         </div>   
       </div>
   `;
-    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
