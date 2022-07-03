@@ -2,7 +2,7 @@ if (!localStorage["searchHistory"]) {
   localStorage["searchHistory"] = JSON.stringify([]);
 }
 
-let apiKey = "2a980a820d1b255b9609b3f0f671cc24";
+var apiKey = "2a980a820d1b255b9609b3f0f671cc24";
 
 var today = moment();
 $("#main-date").text(today.format("dddd, MMMM Do, YYYY"));
@@ -14,7 +14,6 @@ function setTime() {
 setInterval(setTime, 1000);
 
 function displayWeatherCondition(response) {
-  console.log(response);
   document.querySelector("#main-city").innerHTML = response.data.name;
   document.querySelector("#main-temp").innerHTML = Math.round(
     response.data.main.temp
@@ -26,7 +25,7 @@ function displayWeatherCondition(response) {
     response.data.wind.speed
   );
 
-  let iconElement = document.querySelector("#main-icon");
+  var iconElement = document.querySelector("#main-icon");
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -37,7 +36,7 @@ function displayWeatherCondition(response) {
 }
 
 function searchCity(city, storeSearch) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
+  var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
 
   axios.get(apiUrl).then(displayWeatherCondition);
   if (storeSearch) {
@@ -48,14 +47,14 @@ function searchCity(city, storeSearch) {
 
 function handleSumit(event) {
   event.preventDefault();
-  let city = document.querySelector("#input-city").value;
+  var city = document.querySelector("#input-city").value;
   if (city.length != 0) {
     searchCity(city, true);
   }
 }
 function handleSumitBtn(event) {
   event.preventDefault();
-  let city = event.target.innerHTML;
+  var city = event.target.innerHTML;
   searchCity(city, false);
 }
 
@@ -65,7 +64,6 @@ function displayBoth(response) {
 }
 
 function displayUv(response) {
-  console.log(response);
   var currentUvi = document.querySelector("#main-uv");
   currentUvi.innerHTML = response.data.current.uvi;
   currentUvi.className = color(response.data.current.uvi);
@@ -84,16 +82,16 @@ function color(uvi) {
 ///Forecast
 
 function getForecast(coordinates) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  var apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayBoth);
 }
 
 function displayForecast(response) {
-  let forecast = response.data.daily;
+  var forecast = response.data.daily;
 
-  let forecastElement = document.querySelector("#forecastA");
+  var forecastElement = document.querySelector("#forecastA");
 
-  let forecastHTML = `<div class="row">`;
+  var forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     var day = moment(forecastDay.dt * 1000);
 
@@ -150,8 +148,8 @@ function showSearchHistory() {
   var storageKey = "searchHistory";
   var historyArray = JSON.parse(localStorage[storageKey]);
 
-  let cityElement = document.querySelector(".cities-list");
-  let cityListHTML = `<ul>`;
+  var cityElement = document.querySelector(".cities-list");
+  var cityListHTML = `<ul>`;
 
   for (var i = 0; i < Math.min(historyArray.length, 8); i++) {
     cityListHTML += `<li class="city-history-btn">${historyArray[i]}</li>`;

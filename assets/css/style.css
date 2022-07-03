@@ -22,11 +22,10 @@ h1 {
 }
 
 .input-city {
-  padding-top: 11px;
-  padding-bottom: 11px;
   border-radius: var(--border-radius);
   border: var(--border);
   width: 100%;
+  padding: 11px 5px 11px 5px;
 }
 .search-btn {
   width: 100%;
