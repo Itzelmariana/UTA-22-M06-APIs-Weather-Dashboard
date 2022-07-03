@@ -1,0 +1,71 @@
+:root {
+  --border: 1px solid gray;
+  --border-radius: 8px;
+}
+body {
+  font-family: "Questrial", sans-serif;
+}
+h1 {
+  text-align: center;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(58, 104, 188) 0%,
+    rgb(39, 22, 89) 100.2%
+  );
+  height: 50px;
+  padding-top: 12px;
+  color: white;
+  font-size: 22px;
+}
+.custom-container {
+  margin-top: 25px;
+}
+
+.input-city {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: var(--border-radius);
+  border: var(--border);
+  width: 100%;
+}
+.search-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+.main-display {
+  height: 250px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  margin-right: 5px;
+  align-items: center;
+}
+
+.main-city {
+  font-size: 30px;
+}
+.main-icon {
+  font-size: 43px;
+}
+.main-temp {
+  font-size: 43px;
+}
+.main-f {
+  text-align: left;
+}
+h3 {
+  font-size: 20px;
+}
+.forecast{
+  border: var(--border);
+  border-radius: var(--border-radius);
+  margin-right: 25px;
+}
+
+
+
+

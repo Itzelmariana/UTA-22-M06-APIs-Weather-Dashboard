@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Weather Dashboard</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Weather Dashboard</h1>
+    </header>
+
+    <div class="container-fluid custom-container">
+      <div class="row">
+        <div class="col-3">
+          <input
+            type="search"
+            placeholder="Search for a city"
+            class="input-city"
+            id="input-city"
+          />
+          <button type="submit" class="search-btn" id="search-btn">
+            Search
+          </button>
+          <hr />
+        </div>
+        <div class="col-9">
+          <div class="row main-display" id="main-display">
+            <div class="col-4">
+              <h2 class="main-city" id="main-city">Atlanta</h2>
+              <p class="main-date" id="main-date">July 1st,2020</p>
+            </div>
+            <div class="col-2 main-icon" id="main-icon">🌤</div>
+            <div class="col-3 main-temp">
+              <span id="main-temp">99</span>
+              <span>°F</span>
+            </div>
+
+            <div class="col-3 main-details" id="main-details">
+              <ul>
+                <li>Wind:<span id="main-wind"> </span>MPH</li>
+                <li>Humidity:<span id="main-humidity"> </span>%</li>
+                <li>UV index: <span id="main-uv"></span></li>
+              </ul>
+            </div>
+          </div>
+          <h3>5 day Forecast:</h3>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col forecast">
+                <ul class="forecast1">
+                  <li><h4 id="forecast-date1">Date</h4></li>
+                  <li class="forecas-icon" id="forecast-icon1">🌤</li>
+                  <li>Temp: <span id="forecast-temp1"></span>°F</li>
+                  <li>Wind: <span id="forecast-wind1"></span>MPH</li>
+                  <li>Humidity: <span id="forecast-hum1"></span>%</li>
+                </ul>
+              </div>
+              <div class="col forecast">
+                <ul class="forecast2">
+                  <li><h4 id="forecast-date2">Date</h4></li>
+                  <li class="forecas-icon" id="forecast-icon2">🌤</li>
+                  <li>Temp: <span id="forecast-temp2"></span>°F</li>
+                  <li>Wind: <span id="forecast-wind2"></span>MPH</li>
+                  <li>Humidity: <span id="forecast-hum2"></span>%</li>
+                </ul>
+              </div>
+              <div class="col forecast">
+                <ul class="forecast3">
+                  <li><h4 id="forecast-date3">Date</h4></li>
+                  <li class="forecas-icon" id="forecast-icon3">🌤</li>
+                  <li>Temp: <span id="forecast-temp3"></span>°F</li>
+                  <li>Wind: <span id="forecast-wind3"></span>MPH</li>
+                  <li>Humidity: <span id="forecast-hum3"></span>%</li>
+                </ul>
+              </div>
+              <div class="col forecast">
+                <ul class="forecast4">
+                  <li><h4 id="forecast-date4">Date</h4></li>
+                  <li class="forecas-icon" id="forecast-icon2">🌤</li>
+                  <li>Temp: <span id="forecast-temp4"></span>°F</li>
+                  <li>Wind: <span id="forecast-wind4"></span>MPH</li>
+                  <li>Humidity: <span id="forecast-hum4"></span>%</li>
+                </ul>
+              </div>
+              <div class="col forecast">
+                <ul class="forecast5">
+                  <li><h4 id="forecast-date5">Date</h4></li>
+                  <li class="forecas-icon" id="forecast-icon5">🌤</li>
+                  <li>Temp: <span id="forecast-temp5"></span>°F</li>
+                  <li>Wind: <span id="forecast-wind5"></span>MPH</li>
+                  <li>Humidity: <span id="forecast-hum5"></span>%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
