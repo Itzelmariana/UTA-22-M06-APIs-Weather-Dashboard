@@ -28,7 +28,7 @@ function displayWeatherCondition(response) {
   var iconElement = document.querySelector("#main-icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
@@ -102,7 +102,7 @@ function displayForecast(response) {
         <h4 class="forecast-week">${day.format("ddd")}</h4>
          <p class="forecast-date">${day.format("MMM-DD-YY")}</p>
         <img
-          src="http://openweathermap.org/img/wn/${
+          src="https://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
           }@2x.png"
           alt=""
@@ -178,5 +178,4 @@ inputCity.addEventListener("keyup", function (event) {
 
 ///Up to date info
 
-//loadHistory();
 searchCity("New York", false);
